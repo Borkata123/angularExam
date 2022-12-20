@@ -1,0 +1,21 @@
+<section id="dashboard">
+    <h2>Job Offers</h2>
+
+    <!-- Display a div with information about every post (if any)-->
+    <ng-container *ngIf="offerListLength > 0">
+        <div class="offer" *ngFor="let offer of offerList">
+            <img src="{{offer.companyLogoUrl}}" alt="example1" />
+            <p>
+                <strong>Title: </strong><span class="title">{{offer.title}}</span>
+            </p>
+            <p><strong>Salary:</strong><span class="salary">{{offer.salary}}</span></p>
+            <a class="details-btn" routerLink="/offers/{{offer._id}}">Details</a>
+        </div>
+    </ng-container>
+
+
+    <!-- Display an h2 if there are no posts -->
+    <ng-container *ngIf="offerListLength <= 0">
+        <h2>No offers yet.</h2>
+    </ng-container>
+</section>

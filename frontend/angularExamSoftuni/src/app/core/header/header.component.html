@@ -1,0 +1,26 @@
+<header>
+    <!-- Navigation -->
+    <a id="logo" routerLink="/"><img id="logo-img" src="./assets/images/logo.jpg" alt="" /></a>
+
+    <nav>
+        <div>
+            <a routerLink="/offers">Dashboard</a>
+        </div>
+
+        <!-- Logged-in users -->
+        <ng-container *ngIf="user">
+            <div class="user">
+                <a routerLink="/offers/create">Create Offer</a>
+                <a routerLink="/users/logout">Logout</a>
+            </div>
+        </ng-container>
+
+        <!-- Guest users -->
+        <ng-container *ngIf="!user">
+            <div class="guest">
+                <a routerLink="/users/login">Login</a>
+                <a routerLink="/users/register">Register</a>
+            </div>
+        </ng-container>
+    </nav>
+</header>

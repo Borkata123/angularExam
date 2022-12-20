@@ -1,0 +1,63 @@
+<section id="create">
+    <div class="form">
+      <h2>Create Offer</h2>
+      <form class="create-form" #form="ngForm" (ngSubmit)="createHandler(form)">
+        <input
+          type="text"
+          name="title"
+          id="job-title"
+          placeholder="Title"
+          ngModel
+          required
+          #titleInput="ngModel"
+        />
+        <input
+          type="text"
+          name="imageUrl"
+          id="job-logo"
+          placeholder="Company logo url"
+          ngModel
+          required
+          #imageUrlInput="ngModel"
+        />
+        <input
+          type="text"
+          name="category"
+          id="job-category"
+          placeholder="Category"
+          ngModel
+          required
+          #categoryInput="ngModel"
+        />
+        <textarea
+          id="job-description"
+          name="description"
+          placeholder="Description"
+          rows="4"
+          cols="50"
+          ngModel
+          #descriptionInput="ngModel"
+        ></textarea>
+        <textarea
+          id="job-requirements"
+          name="requirements"
+          placeholder="Requirements"
+          rows="4"
+          cols="50"
+          ngModel
+          #requirementsInput="ngModel"
+        ></textarea>
+        <input
+          type="text"
+          name="salary"
+          id="job-salary"
+          placeholder="Salary"
+          ngModel
+          required
+          #salaryInput="ngModel"
+        />
+
+        <button type="submit">post</button>
+      </form>
+    </div>
+  </section>

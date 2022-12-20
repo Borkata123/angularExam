@@ -1,0 +1,37 @@
+<section id="register">
+  <div class="form">
+    <h2>Register</h2>
+    <form [formGroup]="form" class="login-form" (ngSubmit)="registerHandler()">
+      <input type="text" name="email" id="register-email" placeholder="email" required minlength="5"
+        formControlName="email" />
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+        </p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+            Email is not valid!
+        </p>
+      </ng-container>
+      <ng-container formGroupName="pass">
+        <input type="password" name="password" id="register-password" placeholder="password" formControlName="password"
+          required minlength="8" />
+        <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
+          <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">
+            Password should be at least 8 symbols!
+          </p>
+        </ng-container>
+        <input type="password" name="re-password" id="repeat-password" placeholder="repeat password"
+          formControlName="repeatPassword" />
+        <p class="error"
+          *ngIf="form.get('pass')?.errors?.['sameValueGroupValidator'] && form.get('pass')?.get('repeatPassword')?.touched">
+          Passwords don't match!
+        </p>
+      </ng-container>
+      <button type="submit">register</button>
+      <p class="message">Already registered? <a routerLink="/users/login">Login</a></p>
+    </form>
+  </div>
+</section>

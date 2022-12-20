@@ -1,0 +1,35 @@
+<section id="details">
+  <div id="details-wrapper">
+    <img id="details-img" src="{{offer?.companyLogoUrl}}" alt="example1" />
+    <p id="details-title">{{offer?.title}}</p>
+    <p id="details-category">
+      Category: <span id="categories">{{offer?.category}}</span>
+    </p>
+    <p id="details-salary">
+      Salary: <span id="salary-number">{{offer?.salary}}</span>
+    </p>
+    <div id="info-wrapper">
+      <div id="details-description">
+        <h4>Description</h4>
+        <span>{{offer?.description}}</span>
+      </div>
+      <div id="details-requirements">
+        <h4>Requirements</h4>
+        <span>{{offer?.requirements}}</span>
+      </div>
+    </div>
+    <p>Applications: <strong id="applications">{{offer?.applications?.length}}</strong></p>
+
+    <!--Edit and Delete are only for creator-->
+    <div id="action-buttons" *ngIf="user">
+      <ng-container *ngIf="isOwner">
+        <a routerLink="/offers/edit/{{offer?._id}}" id="edit-btn">Edit</a>
+        <a routerLink="/offers/delete/{{offer?._id}}" id="delete-btn">Delete</a>
+      </ng-container>
+      <!--Bonus - Only for logged-in users ( not authors )-->
+
+      <!-- onclick event -->
+      <a id="apply-btn" *ngIf="!isOwner && !hasApplied" (click)="applyHandler()">Apply</a>
+    </div>
+  </div>
+</section>
